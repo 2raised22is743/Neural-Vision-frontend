@@ -44,15 +44,15 @@ const vertexShader = `
     // Size attenuation (smaller when further away)
     gl_PointSize = aSize * (300.0 / -mvPosition.z);
 
-    // Color gradient based on coordinates and random offset
-    vec3 colorA = vec3(0.95, 0.25, 0.25); // crimson red
-    vec3 colorB = vec3(0.25, 0.55, 0.95); // cobalt blue
-    vec3 colorC = vec3(0.25, 0.85, 0.45); // emerald green
+    // Color gradient based on coordinates and random offset (Cosmic Palette: Cobalt, Violet, Stardust)
+    vec3 colorA = vec3(0.48, 0.28, 0.88); // Cosmic Violet
+    vec3 colorB = vec3(0.18, 0.45, 0.96); // Cobalt Blue
+    vec3 colorC = vec3(0.75, 0.88, 0.98); // Stardust Cyan/White
     
-    float mixFactor = sin(pos.x * 0.1 + pos.y * 0.1 + uTime * 0.1) * 0.5 + 0.5;
+    float mixFactor = sin(pos.x * 0.08 + pos.y * 0.08 + uTime * 0.08) * 0.5 + 0.5;
     vec3 color = mix(colorA, colorB, mixFactor);
-    if (aRandom.x > 0.6) {
-      color = mix(color, colorC, aRandom.y);
+    if (aRandom.x > 0.55) {
+      color = mix(color, colorC, aRandom.y * 0.7);
     }
     
     vColor = color;
